@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('make') {
       steps {
-        cmake()
+        cmake(installation: 'InSearchPath')
       }
     }
   }
