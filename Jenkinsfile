@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('make') {
+    stage('Compile') {
       steps {
         cmake(installation: 'InSearchPath', arguments: './')
         sh '''make
@@ -9,7 +9,7 @@ cd googlemock/gtest
 '''
       }
     }
-    stage('error') {
+    stage('Test') {
       steps {
         sh '''pwd
 cd googlemock/gtest
@@ -32,6 +32,7 @@ cd googlemock/gtest
                 thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
                 tools: [ GoogleTest(pattern: 'googlemock/gtest/*.xml') ])
         )
+        echo 'finish'
   	}
   }
 }
