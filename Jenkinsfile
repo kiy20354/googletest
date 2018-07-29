@@ -30,7 +30,7 @@ cd googlemock/gtest
   	always {
         step(xunit(
                 thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
-                tools: [ Googletest(pattern: 'googlemock/gtest/*.xml') ])
+                tools: [ GoogleTest(pattern: 'googlemock/gtest/*.xml') ])
         )
   	}
   }
