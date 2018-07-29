@@ -25,4 +25,11 @@ cd googlemock/gtest
       }
     }
   }
+  
+  post {
+  	always {
+  		sh 'pwd'
+  		xunit 'googlemoc/gtest/*.xml'
+  	}
+  }
 }
