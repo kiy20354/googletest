@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('make') {
       steps {
-        cmake 'InSearchPath'
+        cmake(installation: 'InSearchPath', arguments: './')
         sh '''make
 cd googlemock/gtest
 '''
