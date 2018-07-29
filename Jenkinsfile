@@ -24,6 +24,9 @@ cd googlemock/gtest
 '''
       }
     }
+    
+	}
+	
 	post {
 		always {
 			script {
