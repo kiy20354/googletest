@@ -24,14 +24,20 @@ cd googlemock/gtest
 '''
       }
     }
-  }
-  
-  post {
-  	always {
-        step(xunit(
-                thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
-                tools: [ GoogleTest(pattern: 'googlemock/gtest/*.xml') ])
-        )
-  	}
-  }
+	post {
+		always {
+			script {
+				// Ç»Ç∫Ç©ó·äOÇ™î≠ê∂Ç∑ÇÈÇÃÇ≈try-catchÇ∑ÇÈ
+				try {
+					step(xunit(
+						thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
+						tools: [ GoogleTest(pattern: 'googlemock/gtest/*.xml') ]))
+				} catch(error) {
+					echo ' exception'
+				} finally {
+					echo 'xunit end'
+				}
+			}
+		}
+	}
 }
