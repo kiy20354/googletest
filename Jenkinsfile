@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('make') {
       steps {
-        cmake(installation: 'InSearchPath', arguments: './')
+        cmakeBuild(installation: 'InSearchPath', cmakeArgs: './')
       }
     }
   }
