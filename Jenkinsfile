@@ -9,9 +9,12 @@ cd googlemock/gtest
 '''
       }
     }
-    stage('') {
+    stage('error') {
       steps {
-        sh '''./sample1_unittest --gtest_output=xml:sample1.xml
+        sh '''pwd
+cd googlemock/gtest
+
+./sample1_unittest --gtest_output=xml:sample1.xml
 ./sample2_unittest --gtest_output=xml:sample2.xml
 ./sample3_unittest --gtest_output=xml:sample3.xml
 ./sample4_unittest --gtest_output=xml:sample4.xml
