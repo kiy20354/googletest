@@ -3,7 +3,22 @@ pipeline {
   stages {
     stage('make') {
       steps {
-        cmakeBuild(installation: 'InSearchPath', cmakeArgs: './')
+        cmake 'InSearchPath'
+        sh '''make
+cd googlemock/gtest
+'''
+      }
+    }
+    stage('') {
+      steps {
+        sh '''./sample1_unittest --gtest_output=xml:sample1.xml
+./sample2_unittest --gtest_output=xml:sample2.xml
+./sample3_unittest --gtest_output=xml:sample3.xml
+./sample4_unittest --gtest_output=xml:sample4.xml
+./sample5_unittest --gtest_output=xml:sample5.xml
+./sample6_unittest --gtest_output=xml:sample6.xml
+./sample7_unittest --gtest_output=xml:sample7.xml
+'''
       }
     }
   }
