@@ -28,8 +28,9 @@ cd googlemock/gtest
   
   post {
   	always {
-  		sh 'pwd'
-  		xunit 'googlemoc/gtest/*.xml'
+        step(xunit(
+                thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
+                tools: [ Googletest(pattern: 'googlemock/gtest/*.xml') ])
   	}
   }
 }
