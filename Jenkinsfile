@@ -28,7 +28,8 @@ cd googlemock/gtest
   
   post {
   	always {
-        step(xunit(
+        echo 'aaa'
+        xunit(
                 thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
                 tools: [ GoogleTest(pattern: 'googlemock/gtest/*.xml') ])
         )
